@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Iscrizione e Tesseramento - Lega Navale Italiana Matera Magna Grecia</title>
+    
+    <link rel="icon" type="image/x-icon" href="./immagini/logo.png">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .enrollment-wrapper {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            padding: 40px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .enrollment-title {
+            color: #0a111a;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            border-left: 5px solid #d9534f;
+            padding-left: 15px;
+        }
+        
+        .enrollment-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .enrollment-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+        }
+        
+        .info-pane h3 {
+            color: #0a111a;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+        .info-pane h3:first-child {
+            margin-top: 0;
+        }
+        
+        .requirement-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #0a111a;
+            margin-bottom: 20px;
+        }
+        
+        .requirement-card ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .requirement-card li {
+            margin-bottom: 8px;
+        }
+        
+        .form-pane {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #0a111a;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            padding: 12px 14px;
+            border: 1px solid #ccd4dc;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            background-color: #ffffff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0a111a;
+            box-shadow: 0 0 0 3px rgba(10, 17, 26, 0.15);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 16px;
+            margin-top: 10px;
+            background-color: #d9534f;
+            color: white;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(217, 83, 79, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(217, 83, 79, 0.4);
+            background-color: #c9302c;
+        }
+
+        @media (max-width: 900px) {
+            .enrollment-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .enrollment-wrapper {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="immagini/logo.png" alt="Logo LNI" class="nav-logo-img">
+                LNI Matera Magna Grecia
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="orari.html">Date & Orari</a>
+                <a href="iscrizione.html" class="active">Iscrizione</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="enrollment-wrapper">
+            <h1 class="enrollment-title">Iscrizione Corsi Vela 2026</h1>
+            <p class="enrollment-subtitle">Compila il modulo online per opzionare e riservare il tuo posto nei moduli estivi di Luglio e Agosto.</p>
+            
+            <div class="enrollment-grid">
+                
+                <div class="info-pane">
+                    <h3>⚓ Informazioni importanti per il tesseramento</h3>
+                    <p>L'iscrizione ai nostri corsi estivi include contestualmente il tesseramento alla <strong>Federazione Italiana Vela (FIV)</strong> con copertura assicurativa e l'iscrizione come socio alla <strong>Lega Navale Italiana</strong> per l'anno in corso.</p>
+                    
+                    <h3>📋 Requisiti Obbligatori</h3>
+                    <div class="requirement-card">
+                        <strong>Per completare l'iscrizione è tassativamente richiesto:</strong>
+                        <ul>
+                            <li><strong>Capacità natatorie:</strong> È richiesta una fondamentale acquaticità e capacità di nuotare in sicurezza.</li>
+                            <li><strong>Autorizzazione genitori:</strong> Firma di entrambi i genitori se l'allievo è minorenne.</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>🎒 Cosa include il corso</h3>
+                    <ul>
+                        <li>Istruzione teorica e pratica con Istruttori qualificati.</li>
+                        <li>Utilizzo delle imbarcazioni della scuola (Optimist, Laser, Hobie Cat).</li>
+                        <li>Giubbotto di salvataggio (aiuto al galleggiamento) individuale obbligatorio.</li>
+                    </ul>
+                </div>
+                
+                <div class="form-pane">
+                    <h3 style="color: #0a111a; margin-bottom: 20px; text-align: center;">Richiesta Prenotazione</h3>
+                    
+                    <form action="https://formspree.io/f/TUO_ID_FORMSPREE" method="POST">
+                        
+                        <div class="form-group">
+                            <label for="nome_allievo">Nome e Cognome Allievo *</label>
+                            <input type="text" id="nome_allievo" name="nome_allievo" required placeholder="Nome dell'allievo">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="data_nascita">Data di Nascita *</label>
+                                <input type="date" id="data_nascita" name="data_nascita" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="codice_fiscale">Codice Fiscale *</label>
+                                <input type="text" id="codice_fiscale" name="codice_fiscale" required placeholder="16 caratteri" style="text-transform: uppercase;">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="scelta_corso">Seleziona Imbarcazione/Corso *</label>
+                            <select id="scelta_corso" name="scelta_corso" required>
+                                <option value="" disabled selected>Scegli una barca...</option>
+                                <option value="optimist">Optimist (Ragazzi 6-12 anni)</option>
+                                <option value="laser">Laser / ILCA (Deriva dai 12 anni in su)</option>
+                                <option value="hobiecat">Hobie Cat 16 (Catamarano dai 12 anni in su)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="periodo_modulo">Settimana/Modulo Richiesto *</label>
+                            <input type="text" id="periodo_modulo" name="periodo_modulo" required placeholder="Es. Dal 6 al 10 Luglio">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nome_genitore">Nome Genitore / Tutore <span style="font-weight: normal; color: #666;">(Se l'allievo è minorenne)</span></label>
+                            <input type="text" id="nome_genitore" name="nome_genitore" placeholder="Nome del genitore referente">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefono">Recapito Telefonico *</label>
+                                <input type="tel" id="telefono" name="telefono" required placeholder="Numero di telefono">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Indirizzo Email *</label>
+                                <input type="email" id="email" name="_replyto" required placeholder="tua@email.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="note">Note o segnalazioni particolari (es. intolleranze, allergie)</label>
+                            <textarea id="note" name="note" rows="3" placeholder="Scrivi qui eventuali note..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            INVIA RICHIESTA ONLINE
+                        </button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contatti & Iscrizioni</h4>
+                <p>📧 <a href="mailto:matera@leganavale.it" class="mobile-link">Invia una Email</a></p>
+                <p>📞 <a href="tel:+393515810370" class="mobile-link">Chiama in Sezione</a></p>
+                <p>📍 Base: Riva dei Tessali - Borgo Pineto</p>
+            </div>
+            <div class="footer-section">
+                <h4>Seguici sui Social</h4>
+                <p>📸 <a href="https://instagram.com/lni_matera_magnagrecia" target="_blank" class="mobile-link">Instagram (@lni_matera_magnagrecia)</a></p>
+                <p>👥 <a href="https://www.facebook.com/LegaNavaleItalianaSezioneMateraMagnaGrecia" target="_blank" class="mobile-link">Facebook (@Lega Navale Italiana Sezione Matera-MagnaGrecia)</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Lega Navale Italiana - Matera Magna Grecia. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

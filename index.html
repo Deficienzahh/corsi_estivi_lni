@@ -20,6 +20,7 @@
             <div class="nav-links">
                 <a href="index.html" class="active">Home</a>
                 <a href="orari.html">Date & Orari</a>
+                <a href="iscrizione.html">Iscrizione</a>
             </div>
         </div>
     </nav>
@@ -42,7 +43,7 @@
         </div>
         
         <div class="hero-buttons">
-            <a href="#iscrizione" class="cta-button">ISCRIVITI ORA</a>
+            <a href="iscrizione.html" class="cta-button">ISCRIVITI ORA</a>
             <a href="orari.html" class="cta-button secondary-btn">VEDI ORARI</a>
         </div>
     </header>
@@ -125,6 +126,23 @@
                     </div>
                 </article>
 
+                <article class="course-card clickable-card enrollment-card" onclick="window.location.href='iscrizione.html'" title="Vai alla pagina di iscrizione">
+                    <div class="course-header enrollment">
+                        <div class="course-icon-wrapper">
+                            <span class="course-icon-emoji">📝</span>
+                        </div>
+                        <span>ISCRIZIONE 2026</span>
+                    </div>
+                    <div class="course-body">
+                        <ul class="checkmark-list">
+                            <li><strong>Requisiti:</strong> Certificato medico-sportivo</li>
+                            <li>Tesseramento FIV e LNI incluso nel corso</li>
+                            <li>Apertura iscrizioni per moduli settimanali</li>
+                            <li><strong style="color: #1e3c72;">Clicca qui per compilare il modulo</strong></li>
+                        </ul>
+                    </div>
+                </article>
+
             </div>
         </section>
 
@@ -177,7 +195,6 @@
             </div>
         </div>
 
-        <!-- Carosello Estetico Premium -->
         <div id="carouselLightbox" class="carousel-lightbox" onclick="closeCarousel(event)">
             <span class="carousel-close" onclick="closeCarousel(event)">&times;</span>
             
@@ -193,13 +210,26 @@
                 <span>&#10095;</span>
             </button>
 
-            <!-- Contatore Fogli di stile minimal in basso -->
             <div id="carouselCounter" class="carousel-counter">1 / 1</div>
         </div>
     </div>
 
-    <!-- Nuovi Stili CSS Avanzati per il Carosello Estetico -->
     <style>
+        .course-header.enrollment {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+        }
+        .enrollment-card {
+            border-top: 4px solid #2a5298;
+        }
+        .course-icon-emoji {
+            font-size: 1.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
         .gallery-grid img {
             cursor: pointer;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
@@ -209,7 +239,6 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.15);
         }
         
-        /* Lightbox con Sfondo Sfumato e Sfocato */
         .carousel-lightbox {
             position: absolute;
             top: 0;
@@ -249,7 +278,6 @@
             animation: premiumFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
-        /* Bottoni Tondi di Navigazione Minimal e Moderni */
         .carousel-close {
             position: absolute;
             top: 24px;
@@ -258,7 +286,6 @@
             color: rgba(255, 255, 255, 0.7);
             cursor: pointer;
             z-index: 2200;
-            transition: color 0.2s, transform 0.2s;
             line-height: 1;
         }
         .carousel-close:hover {
@@ -296,7 +323,6 @@
         .carousel-prev { left: 24px; }
         .carousel-next { right: 24px; }
         
-        /* Contatore foto sotto l'immagine */
         .carousel-counter {
             position: absolute;
             bottom: 25px;
@@ -318,7 +344,6 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* Mobile Optimization */
         @media (max-width: 768px) {
             .carousel-btn {
                 width: 44px;
@@ -332,7 +357,7 @@
         }
     </style>
 
-    <footer id="iscrizione">
+    <footer id="footer-sezione">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Contatti & Iscrizioni</h4>
@@ -352,7 +377,6 @@
     </footer>
 
     <script>
-        // Database dei contenuti delle finestre popup
         const boatData = {
             optimist: {
                 title: "Classe Optimist",
@@ -371,8 +395,8 @@
             }
         };
 
-        let currentLoadedImages = []; // Array per tracciare le immagini mostrate
-        let currentSlideIndex = 0;    // Indice corrente nel carosello
+        let currentLoadedImages = []; 
+        let currentSlideIndex = 0;    
 
         function openModal(boatKey) {
             const data = boatData[boatKey];
@@ -380,12 +404,10 @@
 
             currentLoadedImages = [];
 
-            // Inserisce i testi descrittivi
             document.getElementById('modalTitle').innerText = data.title;
             document.getElementById('modalDesc').innerText = data.desc;
             document.getElementById('modalActivities').innerText = data.activities;
 
-            // Carica dinamicamente i percorsi delle 5 foto
             for (let i = 1; i <= 5; i++) {
                 const imgElement = document.getElementById(`img${i}`);
                 const srcPath = `immagini/${boatKey}/foto${i}.jpg`;
@@ -395,7 +417,6 @@
                 currentLoadedImages.push(srcPath);
             }
 
-            // Mostra la finestra bloccando lo scrolling del body principale
             const modal = document.getElementById('boatModal');
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -410,7 +431,6 @@
             document.body.style.overflow = ''; 
         }
 
-        /* --- LOGICA DEL CAROSELLO --- */
         function openCarousel(index) {
             const imgElement = document.getElementById(`img${index + 1}`);
             if (imgElement.style.display === 'none') return;
@@ -429,7 +449,6 @@
         function changeSlide(direction, event) {
             if (event) event.stopPropagation(); 
             
-            // Trova il prossimo indice valido evitando immagini nascoste (display: none)
             let newIndex = currentSlideIndex;
             let attempts = 0;
 
@@ -450,19 +469,16 @@
         function updateCarouselImage() {
             const carouselImg = document.getElementById('carouselImg');
             
-            // Crea un effetto di mini reset per attivare l'animazione fadeIn al cambio foto
             carouselImg.style.animation = 'none';
-            carouselImg.offsetHeight; // Trigger reflow per resettare l'animazione
+            carouselImg.offsetHeight; 
             carouselImg.style.animation = null;
 
             carouselImg.src = currentLoadedImages[currentSlideIndex];
 
-            // Aggiorna il contatore dinamico escludendo le immagini non esistenti
             const totalValid = currentLoadedImages.filter((_, idx) => 
                 document.getElementById(`img${idx + 1}`).style.display !== 'none'
             ).length;
             
-            // Calcola la posizione reale visibile
             let activePosition = 1;
             for(let i = 0; i < currentSlideIndex; i++) {
                 if(document.getElementById(`img${i + 1}`).style.display !== 'none') activePosition++;
@@ -471,7 +487,6 @@
             document.getElementById('carouselCounter').innerText = `${activePosition} / ${totalValid}`;
         }
 
-        // Gestione tastiera
         document.addEventListener('keydown', function(event) {
             const carousel = document.getElementById('carouselLightbox');
             if (carousel && carousel.classList.contains('active')) {
@@ -490,7 +505,6 @@
             }
         });
 
-        // Chiude il popup cliccando sulla parte scura esterna
         window.onclick = function(event) {
             const modal = document.getElementById('boatModal');
             if (event.target === modal) {
