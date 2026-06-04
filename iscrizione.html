@@ -132,6 +132,18 @@
             background-color: #c9302c;
         }
 
+        /* Classe per ottimizzare i link del footer su Mobile (Touch target sicuro) */
+        .mobile-link {
+            display: inline-block;
+            padding: 6px 0;
+            color: inherit;
+            text-decoration: none;
+        }
+        .mobile-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
         @media (max-width: 900px) {
             .enrollment-grid {
                 grid-template-columns: 1fr;
@@ -146,6 +158,18 @@
             .form-row {
                 grid-template-columns: 1fr;
                 gap: 0;
+            }
+            .form-pane {
+                padding: 24px 16px;
+            }
+            .enrollment-wrapper {
+                padding: 20px 12px;
+                box-shadow: none;
+                border-radius: 0;
+                margin-top: 10px;
+            }
+            .enrollment-title {
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -173,6 +197,7 @@
             
             <div class="enrollment-grid">
                 
+                <!-- Pannello Info Sinistro -->
                 <div class="info-pane">
                     <h3>⚓ Informazioni importanti per il tesseramento</h3>
                     <p>L'iscrizione ai nostri corsi estivi include contestualmente il tesseramento alla <strong>Federazione Italiana Vela (FIV)</strong> con copertura assicurativa e l'iscrizione come socio alla <strong>Lega Navale Italiana</strong> per l'anno in corso.</p>
@@ -194,14 +219,16 @@
                     </ul>
                 </div>
                 
+                <!-- Modulo di Richiesta Destro -->
                 <div class="form-pane">
                     <h3 style="color: #0a111a; margin-bottom: 20px; text-align: center;">Richiesta Prenotazione</h3>
                     
-                    <form action="https://formspree.io/f/TUO_ID_FORMSPREE" method="POST">
+                    <!-- Configurato con Formspree per invio diretto via mail senza backend -->
+                    <form action="https://formspree.io/f/IL_TUO_ID_FORMSPREE_QUI" method="POST">
                         
                         <div class="form-group">
                             <label for="nome_allievo">Nome e Cognome Allievo *</label>
-                            <input type="text" id="nome_allievo" name="nome_allievo" required placeholder="Nome dell'allievo">
+                            <input type="text" id="nome_allievo" name="nome_allievo" required placeholder="Nome dell'allievo" autocomplete="name" autocorrect="off">
                         </div>
                         
                         <div class="form-row">
@@ -211,7 +238,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="codice_fiscale">Codice Fiscale *</label>
-                                <input type="text" id="codice_fiscale" name="codice_fiscale" required placeholder="16 caratteri" style="text-transform: uppercase;">
+                                <!-- Ottimizzato mobile: maiuscole forzate e niente correttore -->
+                                <input type="text" id="codice_fiscale" name="codice_fiscale" required placeholder="16 caratteri" autocomplete="off" autocorrect="off" autocapitalize="characters" style="text-transform: uppercase;">
                             </div>
                         </div>
                         
@@ -232,17 +260,18 @@
                         
                         <div class="form-group">
                             <label for="nome_genitore">Nome Genitore / Tutore <span style="font-weight: normal; color: #666;">(Se l'allievo è minorenne)</span></label>
-                            <input type="text" id="nome_genitore" name="nome_genitore" placeholder="Nome del genitore referente">
+                            <input type="text" id="nome_genitore" name="nome_genitore" placeholder="Nome del genitore referente" autocomplete="name" autocorrect="off">
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="telefono">Recapito Telefonico *</label>
-                                <input type="tel" id="telefono" name="telefono" required placeholder="Numero di telefono">
+                                <!-- Tastierino numerico pulito su mobile -->
+                                <input type="tel" id="telefono" name="telefono" required placeholder="Numero di telefono" inputmode="tel" autocomplete="tel">
                             </div>
                             <div class="form-group">
                                 <label for="email">Indirizzo Email *</label>
-                                <input type="email" id="email" name="_replyto" required placeholder="tua@email.com">
+                                <input type="email" id="email" name="_replyto" required placeholder="tua@email.com" autocomplete="email">
                             </div>
                         </div>
                         
