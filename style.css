@@ -28,7 +28,7 @@ body {
 }
 
 /* ==========================================================================
-   BARRA DI NAVIGAZIONE
+   BARRA DI NAVIGAZIONE E LOGO AGGIORNATO
    ========================================================================== */
 .navbar {
     background-color: var(--dark-blue);
@@ -51,6 +51,16 @@ body {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2rem;
+    display: flex;
+    align-items: center; /* Allinea verticalmente testo e logo */
+}
+
+/* Stile per l'immagine del logo nella barra di navigazione */
+.nav-logo-img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    margin-right: 10px; /* Spazio tra il logo e la scritta */
 }
 
 .nav-links a {
@@ -383,35 +393,115 @@ header h1 {
 }
 
 /* ==========================================================================
-   FOOTER
+   FOOTER RESPONSIVE (OTTIMIZZATO PER MOBILE)
    ========================================================================== */
 footer {
-    background-color: var(--dark-blue);
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 40px;
-    font-size: 0.9rem;
+    background-color: var(--dark-blue, #0B2545);
+    color: #ffffff;
+    padding: 40px 20px 20px 20px;
+    margin-top: 50px;
 }
 
 .footer-content {
     max-width: 1100px;
-    margin: auto;
+    margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
     justify-content: space-between;
-    text-align: left;
-    padding-bottom: 20px;
+    gap: 30px;
 }
 
 .footer-section {
-    flex: 1 1 250px;
+    flex: 1;
 }
 
 .footer-section h4 {
+    color: #ffd700; /* Oro per i titoli del footer */
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-section p {
+    margin: 12px 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Stile per i link su PC (puliti e discreti) */
+.mobile-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.mobile-link:hover {
     color: #ffd700;
-    margin-bottom: 10px;
+}
+
+.footer-bottom {
+    max-width: 1100px;
+    margin: 30px auto 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* 📱 MEDIA QUERY SPECIFICA PER MOBILE (Sotto i 768px) */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Incolonna le sezioni */
+        text-align: center;     /* Centra tutti i testi */
+        gap: 35px;
+    }
+
+    .footer-section h4 {
+        margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+    }
+    
+    /* Piccola linea estetica sotto i titoli solo su mobile */
+    .footer-section h4::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 25%;
+        width: 50%;
+        height: 2px;
+        background-color: #ffd700;
+    }
+
+    /* Trasforma i link in pulsanti comodi da cliccare sullo smartphone */
+    .mobile-link {
+        display: block;
+        background-color: rgba(255, 255, 255, 0.08);
+        padding: 12px 20px;
+        margin: 10px auto;
+        border-radius: 8px;
+        max-width: 300px; /* Evita che il pulsante diventi troppo largo */
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        font-weight: 500;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .mobile-link:active {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: scale(0.98); /* Effetto click dinamico */
+    }
+    
+    .footer-section p {
+        margin: 5px 0;
+    }
+    
+    /* Isola l'indirizzo della base per non farlo confondere con i bottoni */
+    .footer-section p:last-child {
+        margin-top: 15px;
+        font-style: italic;
+        color: #ddd;
+    }
 }
 
 .mobile-link {
