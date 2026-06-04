@@ -1,16 +1,19 @@
 /* ==========================================================================
-   RESET GENERALE E VARIABILI
+   1. VARIABILI GLOBALI E RESET
    ========================================================================== */
 :root {
-    --primary-blue: #0b3c5d;
-    --laser-red: #d9534f;
-    --dark-blue: #001f3f;
-    --light-bg: #f4f7f6;
+    --primary-blue: #002b54;   /* Il blu scuro dello sfondo dello screenshot */
+    --laser-red: #d9534f;      /* Il rosso dei pulsanti e del brand Laser */
+    --hobie-black: #1a1a1a;
     --white: #ffffff;
-    --shadow: 0 4px 8px rgba(0,0,0,0.1);
+    --bg-light: #f8f9fa;
+    --text-dark: #333333;
+    --text-muted: #666666;
+    --accent-yellow: #ffcc00;  /* Il giallo acceso dei testi in evidenza */
 }
 
 * {
+    box-shadow: none;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -21,25 +24,39 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--light-bg);
-    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Contenitore Responsivo Principale */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
 /* ==========================================================================
-   BARRA DI NAVIGAZIONE
+   2. BARRA DI NAVIGAZIONE (NAVBAR)
    ========================================================================== */
 .navbar {
-    background-color: var(--dark-blue);
+    background-color: var(--primary-blue); /* Sfondo blu scuro coordinato */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
 .nav-container {
-    max-width: 1100px;
-    margin: auto;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,484 +64,549 @@ body {
 }
 
 .nav-logo {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
     display: flex;
     align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .nav-logo-img {
-    height: 32px;
+    height: 40px;
     width: auto;
-    object-fit: contain;
-    margin-right: 10px;
 }
 
 .nav-links a {
-    color: #ccc;
     text-decoration: none;
-    margin-left: 15px;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 5px 10px;
-    transition: color 0.2s;
+    color: rgba(255, 255, 255, 0.75);
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
-.nav-links a:hover, .nav-links a.active {
-    color: #ffd700;
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent-yellow); /* Link attivo giallo come nello screenshot */
 }
 
 /* ==========================================================================
-   HEADER / HERO SECTION - FLUIDO ED EQUILIBRATO
+   3. HERO HEADER (INTESTAZIONE CON LOGHI - COME DA SCREENSHOT)
    ========================================================================== */
-header.hero-header {
-    background-color: var(--primary-blue);
-    color: white;
+.hero-header {
+    background-color: var(--primary-blue); /* Sfondo blu pieno e profondo */
+    padding: 60px 20px;
     text-align: center;
-    padding: 50px 20px;
+    color: var(--white);
 }
 
 .header-main-container {
     display: flex;
-    align-items: center;      
-    justify-content: center;   
-    max-width: 1200px;         
-    margin: 0 auto 20px auto;
-    gap: 30px;                 
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto 30px;
 }
 
 .header-logo {
-    height: clamp(45px, 12vw, 140px); 
-    width: auto;              
+    height: 110px;
+    width: auto;
     object-fit: contain;
-    flex-shrink: 0;            
 }
 
-.header-content {
-    flex-grow: 1;
-    min-width: 0;              
-}
-
-header h1 {
-    margin: 0;
-    font-size: clamp(1.5rem, 4.5vw, 2.6rem);
-    text-transform: uppercase;
+.header-content h1 {
+    font-size: 2.8rem;
+    color: var(--white);
+    margin-bottom: 10px;
     line-height: 1.2;
 }
 
 .tagline {
-    font-style: italic;
-    color: #ffd700;
-    font-size: clamp(1rem, 2.2vw, 1.3rem);
-    margin-top: 8px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--accent-yellow); /* Giallo per i sottotitoli d'impatto */
 }
 
 .sub-info {
-    margin-top: 12px;
-    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .location-marker {
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 3px 10px;
-    border-radius: 4px;
     margin-top: 5px;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
 }
 
 .season-badge {
     display: inline-block;
-    margin-top: 12px;
+    background-color: transparent;
+    color: var(--white);
+    padding: 6px 14px;
+    margin-top: 15px;
+    font-size: 1rem;
     font-weight: bold;
-    font-size: clamp(0.9rem, 1.8vw, 1.05rem);
 }
 
 .hero-buttons {
-    margin-top: 30px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
     justify-content: center;
-}
-
-.cta-button {
-    display: inline-block;
-    background-color: var(--laser-red);
-    color: white;
-    padding: 12px 30px;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
-    transition: transform 0.2s;
-}
-
-.cta-button:hover {
-    transform: scale(1.05);
-}
-
-.secondary-btn {
-    background-color: transparent;
-    border: 2px solid white;
-}
-
-.secondary-btn:hover {
-    background-color: white;
-    color: var(--primary-blue);
-}
-
-/* ==========================================================================
-   CONTENITORI E COSTRUTTORI DI LAYOUT
-   ========================================================================== */
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-}
-
-.features-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.feature-item {
-    flex: 1 1 200px;
-}
-
-.feature-item .icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.feature-item p {
-    font-weight: bold;
-    color: var(--primary-blue);
-}
-
-/* ==========================================================================
-   SEZIONE CORSI 
-   ========================================================================== */
-.courses-section h2, .schedule-section h2 {
-    text-align: center;
-    color: var(--primary-blue);
-    font-size: 2rem;
+    gap: 15px;
     margin-top: 20px;
 }
 
-.section-subtitle {
+/* Bottone Rosso Aranciato dello Screenshot */
+.cta-button {
+    display: inline-block;
+    background-color: var(--laser-red); 
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: 30px; /* Arrotondato come da immagine */
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.cta-button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+/* Bottone Blu con bordo bianco dello Screenshot */
+.secondary-btn {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.secondary-btn:hover {
+    background-color: var(--white);
+    color: var(--primary-blue);
+}
+
+/* ==========================================================================
+   4. SEZIONE VALORI (FEATURES DELLA SCUOLA VELA)
+   ========================================================================== */
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 60px;
+}
+
+.feature-item {
+    background: var(--white);
+    padding: 25px 20px;
     text-align: center;
-    color: #666;
-    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.feature-item .icon {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.feature-item p {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #444;
+}
+
+/* ==========================================================================
+   5. SEZIONE CORSI (SCHEDE DI INDEX.HTML INTERAMENTE CLICCABILI)
+   ========================================================================== */
+.courses-section h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--primary-blue);
+    margin-bottom: 5px;
 }
 
 .courses-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    justify-content: center;
-    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
 }
 
 .course-card {
-    background: white;
+    background-color: var(--white);
     border-radius: 12px;
-    box-shadow: var(--shadow);
-    width: 320px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
-.course-header {
-    color: white;
-    padding: 18px 15px;
-    font-size: 1.3rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; 
-    gap: 15px;                  
+.clickable-card {
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                box-shadow 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                filter 0.2s ease;
+    user-select: none;
 }
 
-.course-icon-wrapper {
-    width: 45px;
-    height: 45px;
-    background-color: var(--white);
-    border-radius: 50%;
+.clickable-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+    filter: brightness(1.02);
+}
+
+.clickable-card:active {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    filter: brightness(0.97);
+}
+
+/* Intestazioni delle schede */
+.course-header {
+    color: var(--white);
+    padding: 22px 20px;
+    font-size: 1.4rem;
+    font-weight: bold;
     display: flex;
     align-items: center;
+    gap: 15px;
+    letter-spacing: 0.5px;
+}
+
+.optimist { background-color: #0056b3 !important; } /* Colore azzurro-blu del brand Optimist */
+.laser { background-color: var(--laser-red) !important; }
+.hobie { background-color: var(--hobie-black) !important; }
+
+.course-icon-wrapper {
+    background-color: var(--white);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
     justify-content: center;
-    flex-shrink: 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    align-items: center;
+    padding: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .course-icon {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;      
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.optimist { background-color: #0056b3; }
-.laser { background-color: var(--laser-red); }
-.hobie { background-color: #1a1a1a; }
-
 .course-body {
-    padding: 22px;
+    padding: 25px;
     flex-grow: 1;
+    background-color: var(--white);
 }
 
 .checkmark-list {
-    list-style-type: "✓ ";
-    padding-left: 15px;
+    list-style: none;
 }
 
 .checkmark-list li {
     margin-bottom: 12px;
+    position: relative;
+    padding-left: 25px;
     color: #444;
+    font-size: 0.98rem;
+}
+
+.checkmark-list li:last-child {
+    margin-bottom: 0;
+}
+
+.checkmark-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+    font-size: 1.1rem;
+    line-height: 1;
 }
 
 /* ==========================================================================
-   SEZIONE INFO EXTRA E TABELLE ORARI
+   6. PAGINA DATE & ORARI (RISOLUZIONE ALLINEAMENTI CON TABELLE INTERNE)
    ========================================================================== */
-.extra-info {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    margin-top: 40px;
-    box-shadow: var(--shadow);
-}
-
-.extra-info h3 {
-    color: var(--primary-blue);
-    margin-bottom: 15px;
-}
-
-.info-blocks {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.info-block {
-    flex: 1 1 300px;
-}
-
-.info-block h4 {
-    color: var(--dark-blue);
-    margin-bottom: 10px;
-}
-
-.info-block ul {
-    padding-left: 20px;
-}
-
-.info-block li {
-    margin-bottom: 8px;
-}
-
-/* Tabelle Orari */
-.schedule-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    margin-top: 40px;
-    padding: 0;
-    margin-bottom: 30px;
+.timetable-section {
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    margin-bottom: 40px;
     overflow: hidden;
 }
 
-.schedule-card-header {
-    color: white;
-    padding: 15px 20px;
+.timetable-header {
+    color: var(--white);
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.timetable-header.optimist { background-color: #0056b3 !important; }
+.timetable-header.laser { background-color: var(--laser-red) !important; }
+.timetable-header.hobie { background-color: var(--hobie-black) !important; }
+
+.timetable-logo-wrapper {
+    background-color: var(--white);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    flex-shrink: 0;
+}
+
+.timetable-logo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.timetable-header h3 {
+    margin: 0;
+    font-size: 1.35rem;
     font-weight: bold;
-    font-size: 1.2rem;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    letter-spacing: 0.5px;
 }
 
-.table-responsive {
-    width: 100%;
-    overflow-x: auto;
+.timetable-body {
+    padding: 25px;
 }
 
-.schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    min-width: 500px;
+.timetable-row-header {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #eef2f5;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--primary-blue);
+    font-size: 1.05rem;
 }
 
-.schedule-table th, .schedule-table td {
-    padding: 12px 20px;
-    border-bottom: 1px solid #f0f0f0;
+.timetable-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f3f5;
+    font-size: 0.98rem;
+    color: #444;
+    align-items: center;
 }
 
-.schedule-table th {
-    background-color: #fafdff;
-    color: #555;
+.timetable-row:last-child {
+    border-bottom: none;
 }
 
-/* Effetto zebrato righe orari per migliore leggibilità */
-.schedule-table tbody tr:nth-child(even) {
-    background-color: #f8fbfd;
-}
-
-.note-box {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    margin-top: 30px;
-    border-left: 5px solid var(--primary-blue);
+.timetable-row .month-label {
+    font-weight: 600;
+    color: var(--text-dark);
 }
 
 /* ==========================================================================
-   FOOTER STRUTTURA BASE (DESKTOP)
+   7. FINESTRA IN SOVRAPPOSIZIONE (MODALE POPUP PER LE DESCRIZIONI)
    ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: var(--white);
+    width: 100%;
+    max-width: 850px;
+    max-height: 85vh;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    animation: modalSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+@keyframes modalSlideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    z-index: 10;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: var(--white);
+}
+
+.modal-header-title {
+    padding: 22px 25px;
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.modal-header-title h2 {
+    font-size: 1.6rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.modal-inner-body {
+    padding: 25px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.modal-text h3, 
+.modal-gallery h3 {
+    color: var(--primary-blue);
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #eef2f5;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modal-text p {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background-color: #e9ecef;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+/* ==========================================================================
+   8. INFO EXTRA & FOOTER
+   ========================================================================== */
+.extra-info {
+    background: var(--white);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    margin-bottom: 40px;
+}
+
+.extra-info h3 { color: var(--primary-blue); font-size: 1.4rem; margin-bottom: 15px; }
+.info-blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.info-block h4 { color: var(--text-dark); margin-bottom: 12px; border-left: 3px solid var(--primary-blue); padding-left: 10px; }
+.info-block ul { padding-left: 20px; }
+.info-block ul li, .info-block p { color: #555; }
+.info-block a { color: var(--primary-blue); text-decoration: none; font-weight: 500; }
+.info-block a:hover { text-decoration: underline; }
+
 footer {
-    background-color: var(--dark-blue, #0B2545);
-    color: #ffffff;
-    padding: 40px 20px 20px 20px;
-    margin-top: 50px;
+    background-color: var(--primary-blue); /* Footer scuro in tinta unita */
+    color: rgba(255, 255, 255, 0.7);
+    padding: 45px 20px 20px;
+    text-align: center;
 }
 
 .footer-content {
-    max-width: 1100px;
-    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto 30px;
     gap: 30px;
 }
 
-.footer-section {
-    flex: 1;
-}
-
-.footer-section h4 {
-    color: #ffd700;
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.footer-section p {
-    margin: 12px 0;
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.mobile-link {
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.2s, background-color 0.2s;
-}
-
-.mobile-link:hover {
-    color: #ffd700;
-}
-
-.footer-bottom {
-    max-width: 1100px;
-    margin: 30px auto 0 auto;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    font-size: 0.9rem;
-    color: #aaa;
-}
+.footer-section { text-align: left; min-width: 250px; }
+.footer-section h4 { color: var(--white); margin-bottom: 15px; }
+.footer-section p { margin-bottom: 10px; font-size: 0.95rem; }
+.footer-section a { color: var(--accent-yellow); text-decoration: none; }
+.footer-section a:hover { color: var(--white); text-decoration: underline; }
+.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px; font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); }
 
 /* ==========================================================================
-   📱 MEDIA QUERIES (OTTIMIZZAZIONE MOBILE SOTTO 768px)
+   9. RESPONSIVE DESIGN (MEDIA QUERIES SMARTPHONE E TABLET)
    ========================================================================== */
 @media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        gap: 10px;
+    .header-main-container { gap: 20px; }
+    .header-logo { height: 85px; }
+    .header-content h1 { font-size: 2.2rem; }
+    .courses-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
     }
-    
-    .nav-links a {
-        margin: 0 8px;
-    }
+}
 
-    /* Gestione loghi fluidi in alto su smartphone */
-    .header-main-container {
-        flex-direction: column;
-        gap: 15px;           
-    }
-    
-    .header-logo {
-        height: 90px; /* Dimensione fissa e bilanciata su smartphone */
-    }
-
-    .course-card {
-        width: 100%;
-    }
-
-    /* FOOTER MOBILE - PULSANTI TOUCH FRIENDLY */
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 35px;
-    }
-
-    .footer-section h4 {
-        margin-bottom: 20px;
-        position: relative;
-        display: inline-block;
-    }
-    
-    .footer-section h4::after {
-        content: '';
-        position: absolute;
-        bottom: -6px;
-        left: 25%;
-        width: 50%;
-        height: 2px;
-        background-color: #ffd700;
-    }
-
-    .mobile-link {
-        display: block;
-        background-color: rgba(255, 255, 255, 0.08);
-        padding: 14px 20px; /* Ottimo spazio di tap per il vivavoce/uso rapido */
-        margin: 12px auto;
-        border-radius: 8px;
-        max-width: 320px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        font-weight: 600;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        color: #ffffff;
-    }
-
-    .mobile-link:hover {
-        background-color: rgba(255, 255, 255, 0.15);
-        color: #ffd700;
-    }
-
-    .mobile-link:active {
-        background-color: rgba(255, 255, 255, 0.25);
-        transform: scale(0.98);
-    }
-    
-    .footer-section p {
-        margin: 5px 0;
-    }
-    
-    .footer-section p:last-child {
-        margin-top: 15px;
-        font-style: italic;
-        color: #ddd;
-    }
+@media (max-width: 600px) {
+    .nav-container { flex-direction: column; gap: 10px; padding: 10px; }
+    .nav-links a { margin: 0 10px; }
+    .header-main-container { flex-direction: column; gap: 15px; }
+    .header-logo { height: 80px; }
+    .hero-buttons { flex-direction: column; align-items: center; gap: 10px; }
+    .cta-button { width: 100%; max-width: 280px; }
+    .modal-content { max-height: 90vh; }
+    .modal-inner-body { padding: 15px; gap: 20px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .timetable-header { padding: 15px; gap: 12px; }
+    .timetable-header h3 { font-size: 1.1rem; }
+    .timetable-body { padding: 15px; }
+    .timetable-row-header, .timetable-row { grid-template-columns: 1.1fr 0.9fr; font-size: 0.88rem; }
+    .footer-content { flex-direction: column; text-align: center; }
+    .footer-section { text-align: center; }
 }

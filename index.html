@@ -26,7 +26,6 @@
 
     <header class="hero-header">
         <div class="header-main-container">
-            
             <img src="immagini/logo.png" alt="Logo Lega Navale" class="header-logo">
             
             <div class="header-content">
@@ -40,7 +39,6 @@
             </div>
             
             <img src="immagini/logo_sport.png" alt="Logo Sportivo" class="header-logo">
-            
         </div>
         
         <div class="hero-buttons">
@@ -72,11 +70,11 @@
 
         <section class="courses-section">
             <h2>I Nostri Corsi</h2>
-            <p class="section-subtitle">Dai primi bordi alle derive e catamarani!</p>
+            <p class="section-subtitle">Dai primi bordi alle derive e catamarani! Clicca ovunque su una scheda per scoprire i dettagli della barca.</p>
             
             <div class="courses-grid">
                 
-                <article class="course-card">
+                <article class="course-card clickable-card" onclick="openModal('optimist')" title="Clicca qui per scoprire l'Optimist">
                     <div class="course-header optimist">
                         <div class="course-icon-wrapper">
                             <img src="immagini/logo_optimist.png" alt="Logo Optimist" class="course-icon">
@@ -93,7 +91,7 @@
                     </div>
                 </article>
 
-                <article class="course-card">
+                <article class="course-card clickable-card" onclick="openModal('laser')" title="Clicca qui per scoprire il Laser">
                     <div class="course-header laser">
                         <div class="course-icon-wrapper">
                             <img src="immagini/logo_laser.png" alt="Logo Laser" class="course-icon">
@@ -110,7 +108,7 @@
                     </div>
                 </article>
 
-                <article class="course-card">
+                <article class="course-card clickable-card" onclick="openModal('hobiecat')" title="Clicca qui per scoprire l'Hobie Cat">
                     <div class="course-header hobie">
                         <div class="course-icon-wrapper">
                             <img src="immagini/logo_hobiecat.png" alt="Logo Hobie Cat 16" class="course-icon">
@@ -122,7 +120,7 @@
                             <li><strong>Età:</strong> Dai 12 anni in su</li>
                             <li>Catamarano sportivo e divertente</li>
                             <li>Lavoro di squadra e adrenalina</li>
-                            <li>Uscite, corsi e esperienze in mare</li>
+                            <li>Uscite, corsi e experiences in mare</li>
                         </ul>
                     </div>
                 </article>
@@ -150,6 +148,190 @@
 
     </main>
 
+    <div id="boatModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            
+            <div class="modal-header-title">
+                <h2 id="modalTitle">Nome Barca</h2>
+            </div>
+            
+            <div class="modal-inner-body">
+                <div class="modal-text">
+                    <h3>La Barca</h3>
+                    <p id="modalDesc">Descrizione della barca...</p>
+                    <h3 style="margin-top: 20px;">Cosa si fa in mare</h3>
+                    <p id="modalActivities">Cosa si fa...</p>
+                </div>
+                
+                <div class="modal-gallery">
+                    <h3>Galleria Immagini</h3>
+                    <div class="gallery-grid">
+                        <img id="img1" src="" alt="Foto 1" onclick="openCarousel(0)" onerror="this.style.display='none'">
+                        <img id="img2" src="" alt="Foto 2" onclick="openCarousel(1)" onerror="this.style.display='none'">
+                        <img id="img3" src="" alt="Foto 3" onclick="openCarousel(2)" onerror="this.style.display='none'">
+                        <img id="img4" src="" alt="Foto 4" onclick="openCarousel(3)" onerror="this.style.display='none'">
+                        <img id="img5" src="" alt="Foto 5" onclick="openCarousel(4)" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carosello Estetico Premium -->
+        <div id="carouselLightbox" class="carousel-lightbox" onclick="closeCarousel(event)">
+            <span class="carousel-close" onclick="closeCarousel(event)">&times;</span>
+            
+            <button class="carousel-btn carousel-prev" onclick="changeSlide(-1, event)" aria-label="Immagine precedente">
+                <span>&#10094;</span>
+            </button>
+            
+            <div class="carousel-slide-wrapper">
+                <img id="carouselImg" src="" alt="Slide Corrente">
+            </div>
+            
+            <button class="carousel-btn carousel-next" onclick="changeSlide(1, event)" aria-label="Immagine successiva">
+                <span>&#10095;</span>
+            </button>
+
+            <!-- Contatore Fogli di stile minimal in basso -->
+            <div id="carouselCounter" class="carousel-counter">1 / 1</div>
+        </div>
+    </div>
+
+    <!-- Nuovi Stili CSS Avanzati per il Carosello Estetico -->
+    <style>
+        .gallery-grid img {
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+        
+        /* Lightbox con Sfondo Sfumato e Sfocato */
+        .carousel-lightbox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 17, 26, 0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .carousel-lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .carousel-slide-wrapper {
+            max-width: 82%;
+            max-height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .carousel-slide-wrapper img {
+            max-width: 100%;
+            max-height: 75vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: premiumFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        /* Bottoni Tondi di Navigazione Minimal e Moderni */
+        .carousel-close {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            z-index: 2200;
+            transition: color 0.2s, transform 0.2s;
+            line-height: 1;
+        }
+        .carousel-close:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.25s ease;
+            z-index: 2200;
+        }
+        .carousel-btn span {
+            font-size: 1.3rem;
+            line-height: 1;
+            display: inline-block;
+        }
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-50%) scale(1.05);
+        }
+        .carousel-prev { left: 24px; }
+        .carousel-next { right: 24px; }
+        
+        /* Contatore foto sotto l'immagine */
+        .carousel-counter {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.85);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            user-select: none;
+        }
+
+        @keyframes premiumFadeIn {
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .carousel-btn {
+                width: 44px;
+                height: 44px;
+                background: rgba(0, 0, 0, 0.4);
+            }
+            .carousel-btn span { font-size: 1rem; }
+            .carousel-prev { left: 12px; }
+            .carousel-next { right: 12px; }
+            .carousel-slide-wrapper { max-width: 90%; }
+        }
+    </style>
+
     <footer id="iscrizione">
         <div class="footer-content">
             <div class="footer-section">
@@ -169,5 +351,152 @@
         </div>
     </footer>
 
+    <script>
+        // Database dei contenuti delle finestre popup
+        const boatData = {
+            optimist: {
+                title: "Classe Optimist",
+                desc: "L'Optimist è un'imbarcazione monoalbero dotata di una caratteristica vela a tanderone. È l'indiscusso standard mondiale per l'introduzione dei più giovani allo sport della vela grazie alla sua eccezionale stabilità e facilità di conduzione.",
+                activities: "I piccoli allievi imparano a riconoscere la direzione del vento, a governare il timone e a regolare la vela. Attraverso giochi ed esercizi mirati in totale sicurezza, acquisiscono autonomia, fiducia in se stessi e un profondo rispetto per l'ambiente marino."
+            },
+            laser: {
+                title: "Classe Laser / ILCA",
+                desc: "Il Laser è una delle derive single-handed più famose e diffuse al mondo. Caratterizzata da uno scafo leggero, piatto e decisamente reattivo, richiede agilità e offre un contatto diretto e purissimo con le forze della natura.",
+                activities: "Durante il corso si approfondiscono le regolazioni di fino della vela (base, cunningham, vang), la conduzione avanzata nelle diverse andature e le tecniche di assetto col corpo (cinghie). Si sperimenta la velocità pura e si impostano le basi per le prime simulazioni di regata."
+            },
+            hobiecat: {
+                title: "Hobie Cat 16",
+                desc: "L'Hobie Cat 16 è il catamarano da spiaggia per eccellenza. Con i suoi iconici scafi asimmetrici in vetroresina e la totale assenza di derive mobili, è famoso in tutto il mondo per la sua velocità, i suoi colori e la sua straordinaria propensione a sollevare uno scafo in aria.",
+                activities: "Trattandosi di un'imbarcazione a due elementi (timoniere e prodiere), l'attività si concentra sul perfetto coordinamento di equipaggio. Imparerai a gestire la randa, il fiocco, a utilizzare il trapezio per bilanciare la barca e a provare l'adrenalina dei passaggi sulle onde a tutta velocità."
+            }
+        };
+
+        let currentLoadedImages = []; // Array per tracciare le immagini mostrate
+        let currentSlideIndex = 0;    // Indice corrente nel carosello
+
+        function openModal(boatKey) {
+            const data = boatData[boatKey];
+            if (!data) return;
+
+            currentLoadedImages = [];
+
+            // Inserisce i testi descrittivi
+            document.getElementById('modalTitle').innerText = data.title;
+            document.getElementById('modalDesc').innerText = data.desc;
+            document.getElementById('modalActivities').innerText = data.activities;
+
+            // Carica dinamicamente i percorsi delle 5 foto
+            for (let i = 1; i <= 5; i++) {
+                const imgElement = document.getElementById(`img${i}`);
+                const srcPath = `immagini/${boatKey}/foto${i}.jpg`;
+                imgElement.src = srcPath;
+                imgElement.style.display = 'block'; 
+                
+                currentLoadedImages.push(srcPath);
+            }
+
+            // Mostra la finestra bloccando lo scrolling del body principale
+            const modal = document.getElementById('boatModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const carousel = document.getElementById('carouselLightbox');
+            carousel.classList.remove('active');
+
+            const modal = document.getElementById('boatModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; 
+        }
+
+        /* --- LOGICA DEL CAROSELLO --- */
+        function openCarousel(index) {
+            const imgElement = document.getElementById(`img${index + 1}`);
+            if (imgElement.style.display === 'none') return;
+
+            currentSlideIndex = index;
+            updateCarouselImage();
+            
+            document.getElementById('carouselLightbox').classList.add('active');
+        }
+
+        function closeCarousel(event) {
+            if (event.target.closest('.carousel-btn') || event.target.id === 'carouselImg') return;
+            document.getElementById('carouselLightbox').classList.remove('active');
+        }
+
+        function changeSlide(direction, event) {
+            if (event) event.stopPropagation(); 
+            
+            // Trova il prossimo indice valido evitando immagini nascoste (display: none)
+            let newIndex = currentSlideIndex;
+            let attempts = 0;
+
+            do {
+                newIndex += direction;
+                if (newIndex >= currentLoadedImages.length) newIndex = 0;
+                if (newIndex < 0) newIndex = currentLoadedImages.length - 1;
+                attempts++;
+            } while (
+                document.getElementById(`img${newIndex + 1}`).style.display === 'none' && 
+                attempts < currentLoadedImages.length
+            );
+
+            currentSlideIndex = newIndex;
+            updateCarouselImage();
+        }
+
+        function updateCarouselImage() {
+            const carouselImg = document.getElementById('carouselImg');
+            
+            // Crea un effetto di mini reset per attivare l'animazione fadeIn al cambio foto
+            carouselImg.style.animation = 'none';
+            carouselImg.offsetHeight; // Trigger reflow per resettare l'animazione
+            carouselImg.style.animation = null;
+
+            carouselImg.src = currentLoadedImages[currentSlideIndex];
+
+            // Aggiorna il contatore dinamico escludendo le immagini non esistenti
+            const totalValid = currentLoadedImages.filter((_, idx) => 
+                document.getElementById(`img${idx + 1}`).style.display !== 'none'
+            ).length;
+            
+            // Calcola la posizione reale visibile
+            let activePosition = 1;
+            for(let i = 0; i < currentSlideIndex; i++) {
+                if(document.getElementById(`img${i + 1}`).style.display !== 'none') activePosition++;
+            }
+
+            document.getElementById('carouselCounter').innerText = `${activePosition} / ${totalValid}`;
+        }
+
+        // Gestione tastiera
+        document.addEventListener('keydown', function(event) {
+            const carousel = document.getElementById('carouselLightbox');
+            if (carousel && carousel.classList.contains('active')) {
+                if (event.key === 'Escape') {
+                    document.getElementById('carouselLightbox').classList.remove('active');
+                } else if (event.key === 'ArrowRight') {
+                    changeSlide(1);
+                } else if (event.key === 'ArrowLeft') {
+                    changeSlide(-1);
+                }
+            } else {
+                const modal = document.getElementById('boatModal');
+                if (modal && modal.classList.contains('active') && event.key === 'Escape') {
+                    closeModal();
+                }
+            }
+        });
+
+        // Chiude il popup cliccando sulla parte scura esterna
+        window.onclick = function(event) {
+            const modal = document.getElementById('boatModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
