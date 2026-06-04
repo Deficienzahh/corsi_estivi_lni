@@ -74,38 +74,33 @@ header.hero-header {
     background-color: var(--primary-blue);
     color: white;
     text-align: center;
-    padding: 50px 20px;        /* Padding aumentato per bilanciare i loghi grandi */
+    padding: 50px 20px;
 }
 
 .header-main-container {
     display: flex;
-    align-items: center;       /* Centra verticalmente loghi e testi tra loro */
-    justify-content: center;   /* Mantiene tutto il blocco centrato nella pagina */
-    max-width: 1200px;         /* Allargato per ospitare comodamente i loghi grandi */
+    align-items: center;       
+    justify-content: center;   
+    max-width: 1200px;         
     margin: 0 auto 20px auto;
-    gap: 30px;                 /* Spazio generoso su PC tra i loghi maxi e il testo */
+    gap: 30px;                 
 }
 
 .header-logo {
-    /* clamp(minimo_mobile, scala_reattiva, massimo_desktop)
-       Su schermi grandi si blocca a 150px. Man mano che stringi la pagina, 
-       il valore 15vw interviene subito rimpicciolendoli in modo fluido, 
-       fino a fermarsi a un minimo di 45px sui telefoni per non stringere il testo. */
     height: clamp(45px, 15vw, 150px); 
-    width: auto;               /* Mantiene le proporzioni corrette delle immagini */
+    width: auto;               
     object-fit: contain;
-    flex-shrink: 0;            /* Impedisce ai loghi di schiacciarsi o deformarsi */
-    transition: height 0.05s ease-out; /* Rende la risposta al ridimensionamento immediata */
+    flex-shrink: 0;            
+    transition: height 0.05s ease-out; 
 }
 
 .header-content {
     flex-grow: 1;
-    min-width: 0;              /* Previene bug di overflow del testo in flexbox */
+    min-width: 0;              
 }
 
 header h1 {
     margin: 0;
-    /* Anche il titolo scala proporzionalmente per convivere con i loghi grandi */
     font-size: clamp(1.5rem, 4.5vw, 2.6rem);
     text-transform: uppercase;
     line-height: 1.2;
@@ -210,7 +205,7 @@ header h1 {
 }
 
 /* ==========================================================================
-   SEZIONE CORSI (CARD ORIGINALI)
+   SEZIONE CORSI (CORREZIONE ED EDIT LOGHI CON CERCHIO BIANCO)
    ========================================================================== */
 .courses-section h2, .schedule-section h2 {
     text-align: center;
@@ -228,16 +223,16 @@ header h1 {
 .courses-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
     margin-top: 30px;
 }
 
 .course-card {
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: var(--shadow);
-    width: 300px;
+    width: 320px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -245,28 +240,53 @@ header h1 {
 
 .course-header {
     color: white;
-    padding: 15px;
-    text-align: center;
-    font-size: 1.4rem;
-    font-weight: bold;
+    padding: 18px 15px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Allineamento a sinistra più ordinato */
+    gap: 15px;                 
+}
+
+/* Il Cerchietto Bianco di Sfondo che crea contrasto come la locandina */
+.course-icon-wrapper {
+    width: 45px;
+    height: 45px;
+    background-color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.course-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;       /* Evita qualsiasi tipo di distorsione */
 }
 
 .optimist { background-color: #0056b3; }
 .laser { background-color: var(--laser-red); }
-.hobie { background-color: #111; }
+.hobie { background-color: #1a1a1a; }
 
 .course-body {
-    padding: 20px;
+    padding: 22px;
     flex-grow: 1;
 }
 
 .checkmark-list {
     list-style-type: "✓ ";
-    padding-left: 20px;
+    padding-left: 15px;
 }
 
 .checkmark-list li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    color: #444;
 }
 
 /* ==========================================================================
@@ -411,7 +431,7 @@ footer {
 }
 
 /* ==========================================================================
-   MEDIA QUERIES (Ottimizzazione Mobile con gestione spazi ridotti)
+   MEDIA QUERIES (Ottimizzazione spazi piccoli)
    ========================================================================== */
 @media (max-width: 768px) {
     .nav-container {
@@ -422,7 +442,7 @@ footer {
         margin: 0 5px;
     }
     .header-main-container {
-        gap: 10px;           /* Riduce la distanza tra loghi e testo sui telefoni */
+        gap: 10px;           
     }
     .footer-content {
         flex-direction: column;
