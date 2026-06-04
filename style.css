@@ -1,0 +1,331 @@
+/* ==========================================================================
+   VARIABILI E RESET
+   ========================================================================== */
+:root {
+    --primary-blue: #0b3c5d;
+    --laser-red: #d9534f;
+    --dark-blue: #001f3f;
+    --light-bg: #f4f7f6;
+    --text-color: #333;
+    --white: #ffffff;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Scorrimento fluido quando si clicca sul tasto Iscriviti */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   HERO HEADER (Ottimizzato per non tagliare i testi sui telefoni stretti)
+   ========================================================================== */
+.hero-header {
+    background: linear-gradient(rgba(11, 60, 93, 0.88), rgba(0, 31, 63, 0.95)), url('images/sfondo-mare.jpg') no-repeat center center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.header-content h1 {
+    font-size: 2.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-style: italic;
+    color: #ffd700;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.sub-info {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.location-marker {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+.season-badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+/* Tasto Call to Action molto grande, facile da tappare con il pollice */
+.cta-button {
+    display: inline-block;
+    background-color: var(--laser-red);
+    color: var(--white);
+    padding: 16px 40px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(217, 83, 79, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.cta-button:active {
+    transform: scale(0.98); /* Feedback visivo al tocco su mobile */
+}
+
+/* ==========================================================================
+   LAYOUT CONTENITORI
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: auto;
+    padding: 25px 15px;
+}
+
+/* GRIGLIA FUNZIONALITÀ (Layout flessibile che diventa colonna su mobile) */
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+}
+
+.feature-item {
+    flex: 1 1 calc(50% - 15px); /* 2 elementi per riga su tablet, 1 su mobile stretto */
+    text-align: center;
+    padding: 10px;
+}
+
+.feature-item .icon {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.feature-item p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+/* ==========================================================================
+   SEZIONE CORSI (CARD ADATTIVE)
+   ========================================================================== */
+.courses-section h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    padding: 0 10px;
+}
+
+.courses-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.course-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    width: 100%; /* Prende tutta la larghezza sui telefoni */
+    max-width: 340px; /* Evita di allargarsi troppo sui tablet */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-header {
+    color: var(--white);
+    padding: 15px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.optimist { background-color: #0056b3; }
+.laser { background-color: var(--laser-red); }
+.hobie { background-color: #1a1a1a; }
+
+.course-body {
+    padding: 20px;
+}
+
+.checkmark-list {
+    list-style: none;
+}
+
+.checkmark-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.checkmark-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   SEZIONE INFO AGGIUNTIVE
+   ========================================================================== */
+.extra-info {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 40px;
+    box-shadow: var(--shadow);
+}
+
+.extra-info h3 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--light-bg);
+    padding-bottom: 8px;
+}
+
+.info-blocks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.info-block {
+    flex: 1 1 100%; /* Va a capo in automatico se non c'è spazio */
+}
+
+.info-block h4 {
+    color: var(--dark-blue);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.info-block ul {
+    padding-left: 20px;
+}
+
+.info-block li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   FOOTER CON LINK TAP-FRIENDLY
+   ========================================================================== */
+footer {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 35px 20px 20px 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Stack verticale di default per i telefoni */
+    gap: 25px;
+    text-align: center;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section h4 {
+    color: #ffd700;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+/* Stile per i link su mobile: blocchi grandi facili da cliccare */
+.mobile-link {
+    display: inline-block;
+    color: var(--white);
+    text-decoration: underline;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    margin: 4px 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+/* ==========================================================================
+   MEDIA QUERY PER SCHERMI PIÙ GRANDI (PC e Tablet)
+   ========================================================================== */
+@media (min-width: 768px) {
+    .hero-header {
+        padding: 70px 20px;
+    }
+
+    .header-content h1 {
+        font-size: 3rem;
+    }
+
+    .feature-item {
+        flex: 1 1 calc(25% - 15px); /* 4 elementi sulla stessa riga su PC */
+    }
+
+    .info-block {
+        flex: 1 1 calc(50% - 20px); /* Info affiancate su PC */
+    }
+
+    .footer-content {
+        flex-direction: row; /* Contatti e social affiancati su PC */
+        justify-content: space-around;
+        text-align: left;
+    }
+    
+    .mobile-link {
+        background: none;
+        padding: 0;
+        display: inline;
+    }
+}
