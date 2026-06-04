@@ -1,5 +1,5 @@
 /* ==========================================================================
-   RESET GENERALE E VARIABILI (Stile Originale)
+   RESET GENERALE E VARIABILI
    ========================================================================== */
 :root {
     --primary-blue: #0b3c5d;
@@ -68,38 +68,45 @@ body {
 }
 
 /* ==========================================================================
-   HEADER / HERO SECTION CON LOGHI AFFIANCATI E PICCOLI
+   HEADER / HERO SECTION - LOGHI MAXI (150px) E ULTRA-FLUIDI
    ========================================================================== */
 header.hero-header {
     background-color: var(--primary-blue);
     color: white;
     text-align: center;
-    padding: 40px 15px;
+    padding: 50px 20px;        /* Padding aumentato per bilanciare i loghi grandi */
 }
 
 .header-main-container {
     display: flex;
-    align-items: center;       /* Allinea verticalmente loghi e testi al centro */
-    justify-content: center;   /* Centra l'intero blocco */
-    max-width: 800px;
-    margin: 0 auto 15px auto;
-    gap: 15px;                 /* Spazio tra loghi e testo */
+    align-items: center;       /* Centra verticalmente loghi e testi tra loro */
+    justify-content: center;   /* Mantiene tutto il blocco centrato nella pagina */
+    max-width: 1200px;         /* Allargato per ospitare comodamente i loghi grandi */
+    margin: 0 auto 20px auto;
+    gap: 30px;                 /* Spazio generoso su PC tra i loghi maxi e il testo */
 }
 
 .header-logo {
-    width: 100px;               /* Dimensione ridotta, proporzionata alla scritta */
-    height: auto;
+    /* clamp(minimo_mobile, scala_reattiva, massimo_desktop)
+       Su schermi grandi si blocca a 150px. Man mano che stringi la pagina, 
+       il valore 15vw interviene subito rimpicciolendoli in modo fluido, 
+       fino a fermarsi a un minimo di 45px sui telefoni per non stringere il testo. */
+    height: clamp(45px, 15vw, 150px); 
+    width: auto;               /* Mantiene le proporzioni corrette delle immagini */
     object-fit: contain;
-    flex-shrink: 0;            /* Impedisce ai loghi di rimpicciolirsi troppo su mobile */
+    flex-shrink: 0;            /* Impedisce ai loghi di schiacciarsi o deformarsi */
+    transition: height 0.05s ease-out; /* Rende la risposta al ridimensionamento immediata */
 }
 
 .header-content {
     flex-grow: 1;
+    min-width: 0;              /* Previene bug di overflow del testo in flexbox */
 }
 
 header h1 {
     margin: 0;
-    font-size: 2.2rem;
+    /* Anche il titolo scala proporzionalmente per convivere con i loghi grandi */
+    font-size: clamp(1.5rem, 4.5vw, 2.6rem);
     text-transform: uppercase;
     line-height: 1.2;
 }
@@ -107,34 +114,35 @@ header h1 {
 .tagline {
     font-style: italic;
     color: #ffd700;
-    font-size: 1.2rem;
-    margin-top: 5px;
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
+    margin-top: 8px;
 }
 
 .sub-info {
-    margin-top: 10px;
-    font-size: 1.1rem;
+    margin-top: 12px;
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
 }
 
 .location-marker {
     display: inline-block;
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 2px 8px;
+    padding: 3px 10px;
     border-radius: 4px;
     margin-top: 5px;
 }
 
 .season-badge {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 12px;
     font-weight: bold;
+    font-size: clamp(0.9rem, 1.8vw, 1.05rem);
 }
 
 .hero-buttons {
-    margin-top: 25px;
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     justify-content: center;
 }
 
@@ -172,7 +180,7 @@ header h1 {
     padding: 20px;
 }
 
-/* Griglia Valori / Caratteristiche */
+/* Griglia Valori */
 .features-container {
     display: flex;
     flex-wrap: wrap;
@@ -403,7 +411,7 @@ footer {
 }
 
 /* ==========================================================================
-   MEDIA QUERIES (Ottimizzazioni Mobile senza stravolgere i loghi)
+   MEDIA QUERIES (Ottimizzazione Mobile con gestione spazi ridotti)
    ========================================================================== */
 @media (max-width: 768px) {
     .nav-container {
@@ -413,11 +421,8 @@ footer {
     .nav-links a {
         margin: 0 5px;
     }
-    header h1 {
-        font-size: 1.6rem; /* Riduce la scritta su smartphone per far stare tutto in linea */
-    }
-    .header-logo {
-        width: 35px;       /* Rimpicciolisce leggermente anche i loghi sui telefoni stretti */
+    .header-main-container {
+        gap: 10px;           /* Riduce la distanza tra loghi e testo sui telefoni */
     }
     .footer-content {
         flex-direction: column;
