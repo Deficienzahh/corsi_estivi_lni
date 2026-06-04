@@ -2,30 +2,61 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Scuola Vela - Lega Navale Italiana Matera</title>
+    
+    <!-- Icona scheda del browser (Favicon) -->
+    <link rel="icon" type="image/png" href="immagini/logo.png">
+    
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="./foto/logo.png">
 </head>
 <body>
 
+    <!-- BARRA DI NAVIGAZIONE -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">⚓ LNI Matera</a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="orari.html">Date & Orari</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO HEADER CON LOGHI AI LATI -->
     <header class="hero-header">
-        <div class="header-content">
-            <h1>Scuola Vela 2026</h1>
-            <p class="tagline">Il mare, la passione. Il tuo futuro.</p>
-            <p class="sub-info">
-                Lega Navale Italiana - Sezione Matera Magna Grecia<br>
-                <strong>Location: Riva dei Tessali - Borgo Pineto</strong>
-            </p>
-            <span class="season-badge">Corsi Estivi - Luglio e Agosto</span>
-            <br>
+        <div class="header-main-container">
+            
+            <!-- Logo Sinistro -->
+            <img src="immagini/logo.png" alt="Logo Lega Navale" class="header-logo">
+            
+            <!-- Blocco Centrale del Titolo -->
+            <div class="header-content">
+                <h1>Scuola Vela 2026</h1>
+                <p class="tagline">Il mare, la passione.<br>Il tuo futuro.</p>
+                <p class="sub-info">
+                    Lega Navale Italiana<br>Sezione Matera Magna Grecia<br>
+                    <span class="location-marker">📍 Riva dei Tessali</span>
+                </p>
+                <div class="season-badge">Corsi Estivi - Luglio e Agosto</div>
+            </div>
+            
+            <!-- Logo Destro -->
+            <img src="immagini/logo_sport.png" alt="Logo Sportivo" class="header-logo">
+            
+        </div>
+        
+        <div class="hero-buttons">
             <a href="#iscrizione" class="cta-button">ISCRIVITI ORA</a>
+            <a href="orari.html" class="cta-button secondary-btn">VEDI ORARI</a>
         </div>
     </header>
 
+    <!-- CONTENITORE PRINCIPALE -->
     <main class="container">
         
-        <section class="features-bar">
+        <!-- SEZIONE VALORI -->
+        <section class="features-container">
             <div class="feature-item">
                 <span class="icon">⚓</span>
                 <p>Sicurezza & Attrezzature Omologate</p>
@@ -36,7 +67,7 @@
             </div>
             <div class="feature-item">
                 <span class="icon">🛡️</span>
-                <p>Ambiente Sano, Inclusivo e Formativo</p>
+                <p>Ambiente Sano e Inclusivo</p>
             </div>
             <div class="feature-item">
                 <span class="icon">🏅</span>
@@ -44,44 +75,48 @@
             </div>
         </section>
 
+        <!-- SEZIONE CORSI -->
         <section class="courses-section">
             <h2>I Nostri Corsi</h2>
-            <p class="section-subtitle">Corsi per bambini, ragazzi e adulti, dai primi bordi alle derive e catamarani!</p>
+            <p class="section-subtitle">Dai primi bordi alle derive e catamarani!</p>
             
             <div class="courses-grid">
                 
+                <!-- OPTIMIST -->
                 <article class="course-card">
                     <div class="course-header optimist">OPTIMIST</div>
                     <div class="course-body">
                         <ul class="checkmark-list">
                             <li><strong>Età:</strong> Dai 6 ai 12 anni</li>
                             <li>Imparare divertendosi</li>
-                            <li>Tecnica, autonomia e rispetto del mare</li>
+                            <li>Tecnica e rispetto del mare</li>
                             <li>Attività ludico-sportiva</li>
                         </ul>
                     </div>
                 </article>
 
+                <!-- LASER -->
                 <article class="course-card">
                     <div class="course-header laser">LASER</div>
                     <div class="course-body">
                         <ul class="checkmark-list">
                             <li><strong>Età:</strong> Dai 12 anni in su</li>
                             <li>Deriva singola stabile e divertente</li>
-                            <li>Imparare la tecnica e migliorare la conduzione</li>
+                            <li>Migliorare la conduzione</li>
                             <li>Adatto a tutti i livelli</li>
                         </ul>
                     </div>
                 </article>
 
+                <!-- HOBIE CAT -->
                 <article class="course-card">
                     <div class="course-header hobie">HOBIE CAT 16</div>
                     <div class="course-body">
                         <ul class="checkmark-list">
                             <li><strong>Età:</strong> Dai 12 anni in su</li>
-                            <li>Catamarano sportivo e divertente</li>
+                            <li>Catamarano sportivo veloce</li>
                             <li>Lavoro di squadra e adrenalina</li>
-                            <li>Uscite, corsi e esperienze in mare</li>
+                            <li>Uscite ed experiences in mare</li>
                         </ul>
                     </div>
                 </article>
@@ -89,44 +124,46 @@
             </div>
         </section>
 
+        <!-- SEZIONE INFO EXTRA -->
         <section class="extra-info">
-            <h3>ℹ️ Informazioni Utili per i Partecipanti</h3>
+            <h3>ℹ️ Info Utili per i Partecipanti</h3>
             <div class="info-blocks">
                 <div class="info-block">
                     <h4>Cosa Portare</h4>
                     <ul>
-                        <li>Certificato medico non agonistico in corso di validità</li>
-                        <li>Un cambio completo di vestiti asciutti</li>
-                        <li>Crema solare ad alta protezione e cappellino</li>
-                        <li>Scarpette da scoglio o scarpe da ginnastica da bagnare</li>
-                        <li>Asciugamano o accappatoio</li>
+                        <li>Certificato medico non agonistico</li>
+                        <li>Cambio completo di vestiti asciutti</li>
+                        <li>Crema solare e cappellino</li>
+                        <li>Scarpette da scoglio (o vecchie scarpe da ginnastica)</li>
+                        <li>Asciugamano</li>
                     </ul>
                 </div>
                 <div class="info-block">
                     <h4>Orari e Logistica</h4>
-                    <p>I corsi sono organizzati in moduli settimanali dal lunedì al venerdì. È possibile scegliere la fascia mattutina o pomeridiana in base alle disponibilità al momento dell'iscrizione.</p>
+                    <p>I corsi sono organizzati in moduli settimanali (Lunedì - Venerdì). Puoi consultare il calendario completo nella pagina dedicata <a href="orari.html">Date e Orari</a>.</p>
                 </div>
             </div>
         </section>
 
     </main>
 
+    <!-- FOOTER -->
     <footer id="iscrizione">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Contatti & Iscrizioni</h4>
-                <p>📧 Email: lni_matera_magnagrecia@esempio.it</p>
-                <p>📞 Telefono: +39 351 581 0370 - +39 328 289 9312</p>
-                <p>📍 Base Nautica: Riva dei Tessali - Borgo Pineto</p>
+                <p>📧 <a href="mailto:lni_matera_magnagrecia@esempio.it" class="mobile-link">Invia una Email</a></p>
+                <p>📞 <a href="tel:+390835123456" class="mobile-link">Chiama in Sezione</a></p>
+                <p>📍 Base: Riva dei Tessali</p>
             </div>
             <div class="footer-section">
                 <h4>Seguici sui Social</h4>
-                <p>📸 Instagram: <a href="https://instagram.com/lni_matera_magnagrecia" target="_blank">@lni_matera_magnagrecia</a></p>
-                <p>👥 Facebook: <a href="https://www.facebook.com/leganavale.MateraMagnaGrecia" target="_blank">Lega Navale Italiana Sezione Matera</a></p>
+                <p>📸 <a href="https://instagram.com/lni_matera_magnagrecia" target="_blank" class="mobile-link">Instagram (@lni_matera_magnagrecia)</a></p>
+                <p>👥 <a href="#" target="_blank" class="mobile-link">Facebook</a></p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Lega Navale Italiana Sezione Matera Magna Grecia. Tutti i diritti riservati.</p>
+            <p>&copy; 2026 Lega Navale Italiana - Matera Magna Grecia. Tutti i diritti riservati.</p>
         </div>
     </footer>
 
