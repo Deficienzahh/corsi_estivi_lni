@@ -87,7 +87,7 @@ header.hero-header {
 }
 
 .header-logo {
-    width: 150px;               /* Dimensione ridotta, proporzionata alla scritta */
+    width: 100px;               /* Dimensione ridotta, proporzionata alla scritta */
     height: auto;
     object-fit: contain;
     flex-shrink: 0;            /* Impedisce ai loghi di rimpicciolirsi troppo su mobile */
