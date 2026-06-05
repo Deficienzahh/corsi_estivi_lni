@@ -753,47 +753,56 @@ footer {
 
 /* Ottimizzazioni specifiche e mirate per schermi Mobile piccoli (fino a 600px) */
 @media (max-width: 600px) {
-    /* Forza le righe doppie del form (Data/CF e Tel/Mail) a disporsi in verticale */
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .form-pane { padding: 22px 16px; }
+    .enrollment-wrapper { padding: 20px 14px; margin-top: 10px; margin-bottom: 20px; box-shadow: none; border-radius: 0; }
+    .enrollment-title { font-size: 1.55rem; }
+    .enrollment-subtitle { font-size: 0.98rem; margin-bottom: 25px; }
+    .form-group input, .form-group select, .form-group textarea { font-size: 16px; padding: 14px 12px; }
+    .submit-btn { padding: 18px; font-size: 1.15rem; }
+} 
 
-    /* Ricalibra i padding del modulo per sfruttare ogni pixel utile senza tagliare i campi */
-    .form-pane {
-        padding: 22px 16px;
-    }
+/* --- IL BLOCCO QUI SOTTO DEVE STARE FUORI DALLE MEDIA QUERY --- */
 
-    /* Elimina i margini e le ombre superflue dal wrapper per adattarsi perfettamente ai bordi dello schermo */
-    .enrollment-wrapper {
-        padding: 20px 14px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        box-shadow: none;
-        border-radius: 0;
-    }
+/* Il contenitore genitore deve allungare i figli */
+.flex-container-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: stretch; /* <--- QUESTO FORZA L'ALTEZZA UGUALE */
+}
 
-    /* Rimpicciolisce il titolo per farlo stare su una riga sola */
-    .enrollment-title {
-        font-size: 1.55rem;
-    }
+/* Le due schede devono avere la stessa base di crescita */
+.extra-info, 
+.enrollment-card {
+    flex: 1; 
+    display: flex;        /* Necessario per gestire il contenuto interno */
+    flex-direction: column;
+}
 
-    .enrollment-subtitle {
-        font-size: 0.98rem;
-        margin-bottom: 25px;
-    }
+/* Forza il corpo della scheda di iscrizione a riempire lo spazio */
+.enrollment-card .course-body {
+    flex-grow: 1; /* Il contenuto interno si allungherà per pareggiare l'altezza */
+}
 
-    /* Ottimizza le dimensioni e lo zoom dei campi di testo per prevenire lo zoom automatico di iOS Safari */
-    .form-group input, 
-    .form-group select, 
-    .form-group textarea {
-        font-size: 16px; 
-        padding: 14px 12px; /* Incrementa l'altezza di tocco */
-    }
+/* Rimuoviamo la griglia interna per farli stare in colonna */
+.extra-info .info-blocks {
+    display: block; 
+}
 
-    /* Tasto d'invio massiccio e facilissimo da premere */
-    .submit-btn {
-        padding: 18px;
-        font-size: 1.15rem;
+/* Assicuriamo che la card di iscrizione riempia bene lo spazio */
+.enrollment-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.enrollment-card .course-body {
+    flex-grow: 1;
+}
+
+/* Responsività per mobile */
+@media (max-width: 768px) {
+    .flex-container-info {
+        flex-direction: column;
     }
 }
